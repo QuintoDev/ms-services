@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.careassistant</groupId>
 	<artifactId>ms-services</artifactId>
-	<version>ms-services-0.0.1</version>
+	<version>0.0.1</version>
 	<name>ms-services</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
