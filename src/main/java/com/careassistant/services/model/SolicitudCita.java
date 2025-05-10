@@ -19,6 +19,7 @@ public class SolicitudCita {
 	private String uuidProfesionalSalud;
 
 	private String especialidad;
+	private String ubicacion;
 
 	public String getId() {
 		return id;
@@ -74,6 +75,14 @@ public class SolicitudCita {
 
 	public void setEspecialidad(String especialidad) {
 		this.especialidad = especialidad;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
 	}
 
 }
