@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.careassistant.services.model.SolicitudCita;
 
 @Repository
-public interface SolicitudCitaRepository extends JpaRepository<SolicitudCita, Long> {
+public interface SolicitudCitaRepository extends JpaRepository<SolicitudCita, String> {
+	List<SolicitudCita> findByUuidPaciente(String uuidPaciente);
 
-	List<SolicitudCita> findByCorreoPaciente(String correo);
+	List<SolicitudCita> findByUuidProfesionalSalud(String uuidProfesionalSalud);
 
 }

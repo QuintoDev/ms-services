@@ -1,11 +1,10 @@
 package com.careassistant.services.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.careassistant.services.model.SolicitudCita;
 import com.careassistant.services.repository.SolicitudCitaRepository;
+import com.careassistant.services.utils.IdGeneratorUtil;
 
 @Service
 public class SolicitudCitaService {
@@ -18,21 +17,21 @@ public class SolicitudCitaService {
 	}
 
 	public SolicitudCita crear(SolicitudCita cita) {
+		String idGenerado = IdGeneratorUtil.generarIdCita(cita.getEspecialidad());
+
+		cita.setId(idGenerado);
 		cita.setEstado("PENDIENTE");
+
 		return solicitudCitaRepository.save(cita);
 	}
 
-	public List<SolicitudCita> buscarPorPaciente(String correo) {
-		return solicitudCitaRepository.findByCorreoPaciente(correo);
-	}
-
-	public void confirmar(Long id) {
+	public void confirmar(String id) {
 		SolicitudCita cita = solicitudCitaRepository.findById(id).orElseThrow();
 		cita.setEstado("CONFIRMADA");
 		solicitudCitaRepository.save(cita);
 	}
 
-	public void cancelar(Long id) {
+	public void cancelar(String id) {
 		SolicitudCita cita = solicitudCitaRepository.findById(id).orElseThrow();
 		cita.setEstado("CANCELADA");
 		solicitudCitaRepository.save(cita);

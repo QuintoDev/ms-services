@@ -3,29 +3,28 @@ package com.careassistant.services.model;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class SolicitudCita {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 
 	private Date fecha;
 	private String hora;
 	private String estado;
 
-	private String correoPaciente;
-	private String correoProfesional;
+	private String uuidPaciente;
+	private String uuidProfesionalSalud;
 
-	public Long getId() {
+	private String especialidad;
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -53,20 +52,28 @@ public class SolicitudCita {
 		this.estado = estado;
 	}
 
-	public String getCorreoPaciente() {
-		return correoPaciente;
+	public String getUuidPaciente() {
+		return uuidPaciente;
 	}
 
-	public void setCorreoPaciente(String correoPaciente) {
-		this.correoPaciente = correoPaciente;
+	public void setUuidPaciente(String uuidPaciente) {
+		this.uuidPaciente = uuidPaciente;
 	}
 
-	public String getCorreoProfesional() {
-		return correoProfesional;
+	public String getUuidProfesionalSalud() {
+		return uuidProfesionalSalud;
 	}
 
-	public void setCorreoProfesional(String correoProfesional) {
-		this.correoProfesional = correoProfesional;
+	public void setUuidProfesionalSalud(String uuidProfesionalSalud) {
+		this.uuidProfesionalSalud = uuidProfesionalSalud;
+	}
+
+	public String getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
 	}
 
 }
