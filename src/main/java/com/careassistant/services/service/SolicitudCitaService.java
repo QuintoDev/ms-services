@@ -17,7 +17,7 @@ public class SolicitudCitaService {
 	}
 
 	public SolicitudCita crear(SolicitudCita cita) {
-		String idGenerado = IdGeneratorUtil.generarIdCita(cita.getEspecialidad());
+		String idGenerado = IdGeneratorUtil.generarIdCita(cita.getResumen());
 
 		cita.setId(idGenerado);
 		cita.setEstado("PENDIENTE");

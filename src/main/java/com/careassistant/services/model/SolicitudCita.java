@@ -18,7 +18,7 @@ public class SolicitudCita {
 	private String uuidPaciente;
 	private String uuidProfesionalSalud;
 
-	private String especialidad;
+	private String resumen;
 	private String ubicacion;
 
 	public String getId() {
@@ -69,12 +69,12 @@ public class SolicitudCita {
 		this.uuidProfesionalSalud = uuidProfesionalSalud;
 	}
 
-	public String getEspecialidad() {
-		return especialidad;
+	public String getResumen() {
+		return resumen;
 	}
 
-	public void setEspecialidad(String especialidad) {
-		this.especialidad = especialidad;
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
 	}
 
 	public String getUbicacion() {
