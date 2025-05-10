@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,12 +74,24 @@ public class SolicitudCitaController {
 
 	@PutMapping("{id}/confirm")
 	public ResponseEntity<Void> confirmar(@PathVariable String id) {
+		Optional<SolicitudCita> citaOpt = solicitudCitaRepository.findById(id);
+
+		if (citaOpt.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		SolicitudCita cita = citaOpt.get();
+		if ("CANCELADA".equalsIgnoreCase(cita.getEstado())) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+
 		solicitudCitaService.confirmar(id);
 		return ResponseEntity.ok().build();
 	}
 
 	@PutMapping("{id}/cancel")
 	public ResponseEntity<Void> cancelar(@PathVariable String id) {
+		solicitudCitaService.cancelar(id);
 		return ResponseEntity.ok().build();
 	}
 
