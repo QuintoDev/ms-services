@@ -34,7 +34,7 @@ public class SolicitudCitaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<SolicitudCita> crear(@RequestBody SolicitudCita cita) {
+	public ResponseEntity<SolicitudCita> crear(@RequestBody SolicitudCita cita) throws Exception {
 		return ResponseEntity.ok(solicitudCitaService.crear(cita));
 	}
 
