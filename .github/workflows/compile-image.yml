@@ -1,0 +1,33 @@
+name: Java CI with Maven
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_jar:
+    name: Build JAR
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Run tests
+      run: mvn test
+
+    - name: Upload jar as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ms-services-0.0.1.jar
+        path: target/ms-services-0.0.1.jar
+        retention-days: 1
